@@ -13,23 +13,23 @@ typedef struct Stack {
     int size;
 } Stack;
 
-// ½ºÅÃ ÃÊ±âÈ­
+// ìŠ¤íƒ ì´ˆê¸°í™”
 void initStack(Stack* stack) {
     stack->top = NULL;
     stack->size = 0;
 }
 
-// ½ºÅÃ ºñ¾î ÀÖ´ÂÁö È®ÀÎ
+// ìŠ¤íƒ ë¹„ì–´ ìˆëŠ”ì§€ í™•ì¸
 int isEmpty(Stack* stack) {
     return stack->size == 0;
 }
 
-// ½ºÅÃ °¡µæ Ã¡´ÂÁö È®ÀÎ
+// ìŠ¤íƒ ê°€ë“ ì°¼ëŠ”ì§€ í™•ì¸
 int isFull(Stack* stack) {
     return stack->size >= MAX_SIZE;
 }
 
-// ½ºÅÃ¿¡ °ª Ãß°¡
+// ìŠ¤íƒì— ê°’ ì¶”ê°€
 void push(Stack* stack, int value) {
     if (isFull(stack)) {
         printf("Stack overflow: Cannot push to a full stack\n");
@@ -46,7 +46,7 @@ void push(Stack* stack, int value) {
     stack->size++;
 }
 
-// ½ºÅÃ¿¡¼­ °ª Á¦°Å
+// ìŠ¤íƒì—ì„œ ê°’ ì œê±°
 int pop(Stack* stack) {
     if (isEmpty(stack)) {
         printf("Stack underflow: Cannot pop from an empty stack\n");
@@ -62,21 +62,7 @@ int pop(Stack* stack) {
     }
 }
 
-// ½ºÅÃÀÇ ÃÖ»óÀ§ °ª ¹İÈ¯
-int peek(Stack* stack) {
-    if (isEmpty(stack)) {
-        printf("Stack is empty: Cannot peek\n");
-        exit(1);
-    }
-    return stack->top->value;
-}
-
-// ½ºÅÃÀÇ Å©±â ¹İÈ¯
-int getSize(Stack* stack) {
-    return stack->size;
-}
-
-// ½ºÅÃÀÇ ÇöÀç »óÅÂ Ãâ·Â
+// ìŠ¤íƒì˜ í˜„ì¬ ìƒíƒœ ì¶œë ¥
 void printStack(Stack* stack) {
     for (Node* p = stack->top; p != NULL; p = p->next)
         printf("%d->", p->value);
@@ -86,15 +72,15 @@ void printStack(Stack* stack) {
 int main() {
     Stack stack;
     initStack(&stack);
-    // ½ºÅÃ¿¡ °ª Ãß°¡
+    // ìŠ¤íƒì— ê°’ ì¶”ê°€
     for (int i = 0; i < 10; i++) {
         push(&stack, i); 
-        printStack(&stack);  // ½ºÅÃ »óÅÂ Ãâ·Â
+        printStack(&stack);  // ìŠ¤íƒ ìƒíƒœ ì¶œë ¥
     }
-    // ½ºÅÃ¿¡¼­ °ª Á¦°Å
+    // ìŠ¤íƒì—ì„œ ê°’ ì œê±°
     while (!isEmpty(&stack)) {
         pop(&stack); 
-        printStack(&stack);  // ½ºÅÃ »óÅÂ Ãâ·Â
+        printStack(&stack);  // ìŠ¤íƒ ìƒíƒœ ì¶œë ¥
     }
     return 0;
 }
